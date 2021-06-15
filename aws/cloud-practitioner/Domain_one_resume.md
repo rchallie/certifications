@@ -23,3 +23,14 @@
 	- Reduces cost
 	- Match customer's ability with users's demandes
 	- Deploying thousands of servers in minutes.
+- Flexibility:
+	- How and where run your workloads
+	- Run applications globally on any region
+	- AWS Local Zones or AWS Wavelength (ex: end-users and need latencies)
+	- AWS Outposts to run on-premises
+- Pay-as-you-go:
+	- Pay only for the individual services
+	- No additional costs or termination fees
+- Save on reserve:
+	- Save up 75% over equivalent on-demande capacity
+	- the larger the upfront payment, the greater the discount
