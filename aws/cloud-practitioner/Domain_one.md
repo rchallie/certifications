@@ -19,4 +19,12 @@ Can invest on reserved capacity (ex: EC2, Amazon RDS). With Reserved Instances, 
 - Economie of scale:
 Get volume based discounts and realize important saving as the usage increases. 
 (ex S3, pricing is tiered, more use = less pay per GB). AWS give options to acquire services that help to address business needs.
-
+### How AWS Cloud allow customer to focus on operational value:
+AWS Cloud give services in many areas, enought for that the customer may be focus on income generator activities, not on the infrastructure.
+## AWS Cloud and economic aspects:
+### Content of the total cost of ownership proposal:
+- OpEx (Functionnary costs): are the current charges to exploit services.
+- CapEx (Investment): The investment on services to be profitable in the long term.
+- On-site operations labor costs: The total management of an infrastructur on-site require to invest on servers bay, skilled workers, time, constant security check etc.     
+by definition a certain amount of money.
+- Software Licence: The user of a licence pay a higher starting cost, next he will pay maintenance costs, updates, and support.

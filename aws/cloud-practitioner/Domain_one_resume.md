@@ -34,3 +34,12 @@
 - Save on reserve:
 	- Save up 75% over equivalent on-demande capacity
 	- the larger the upfront payment, the greater the discount
+### How AWS Cloud allow customer to focus on operational value:
+- Give many services
+- Allow the user to focus on app not on infrastructure
+## AWS Cloud and economic aspects:
+### Content of the total cost of ownership proposal:
+- OpEx (Functionnary costs): current charges
+-  CapEx (Investment): investment for long term
+- On-site operations labor costs: few needs = doesn't require fat on-site infrastructure
+- Software Licence: pay for use, update, maintenance, support.
