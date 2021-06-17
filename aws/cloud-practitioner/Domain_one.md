@@ -28,3 +28,13 @@ AWS Cloud give services in many areas, enought for that the customer may be focu
 - On-site operations labor costs: The total management of an infrastructur on-site require to invest on servers bay, skilled workers, time, constant security check etc.     
 by definition a certain amount of money.
 - Software Licence: The user of a licence pay a higher starting cost, next he will pay maintenance costs, updates, and support.
+### How reduct costs when using the cloud
+- Infrastructure with an adapted size: The best way to doesn't pay to much is to have a to pay only that those which are necessary. Saved on reserve can be more iterresting if the usage is not contant, otherwise the best is to use/pay only what it needed.
+- Automation advantages:
+	- it reduce costs
+	- redirect the productivity on other tasks
+	- disponibility (ex: data redundancy on multiple disks)
+	- increase the fiability, human error is possible where a computer with a script will do the exact same task in the same way
+	- automation increase performances of a system
+- Scope of conformity: Reform data used / stocked to don't invest time / money on certifications or licenses. 
+-  Managed services: The best stay to adapt used services, and use managed services, like ECS or EKS (managed cluster or managed kubernetes)

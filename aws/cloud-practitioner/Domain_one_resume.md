@@ -43,3 +43,12 @@
 -  CapEx (Investment): investment for long term
 - On-site operations labor costs: few needs = doesn't require fat on-site infrastructure
 - Software Licence: pay for use, update, maintenance, support.
+### How reduct costs when using the cloud
+- Infrastructure with an adapted size
+- Automation advantages:
+	- Reduce costs
+	- Redirect productivity
+	- Disponibility
+	- Fiability
+- Scope of conformity: Reform used data to don't spend time / money on certifications
+- Managed services: Use it to don't have to do it
