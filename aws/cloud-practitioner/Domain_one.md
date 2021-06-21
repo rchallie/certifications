@@ -38,3 +38,24 @@ by definition a certain amount of money.
 	- automation increase performances of a system
 - Scope of conformity: Reform data used / stocked to don't invest time / money on certifications or licenses. 
 -  Managed services: The best stay to adapt used services, and use managed services, like ECS or EKS (managed cluster or managed kubernetes)
+## Fundamental cloud architecture model 
+### Explain model principles
+- Failsafe: Is a model method permitting to a system to continue to work, possibly throttled but not totally killed, when a component doesn't work properly.
+- Difference between splitted component and a monolithic architecture: Split an application in different component (in micro-services), like multiple containers (Ex: 1: API, 2: DB, 3: Frontend etc..) help an application to be failsafe, start each part of the application in parrallel, update only one part to don't have to stop everything and a repatirtion of erratic workloads. Monolithic architecture is the invert of all the good points of splitted component, excepted that everything is at the same place.
+- Cloud vs on-site elasticity: On cloud it's easy to expand applications by adding services, on-site it possible to, but it has a cost (ex: add physical servers) 
+# Security and compliance
+## Define the shared responsability design (AWS)
+[Shared responsabily model (FR)](https://aws.amazon.com/fr/compliance/shared-responsibility-model/)
+### Elements of the shared responsability model
+This model distribute responsability between AWS (Hardware, availibility, networking etc..) and the customer (Used applications, laws, encryption etc..)
+- AWS responsability : This model permetted to reduce the customer's operational burden. AWS execute, manage and control the components from the OS to the virtualization layer passing by the physical security of intallations.
+-  Customer responsaibility: The customer have the responsability of the guest OS, the executed applications (update & security), the group firewall provides by WAS, the laws relevant to the applications, data security (encryption) and the integrations of used services. This model of responsability provide a flexibility that give some control to the customer.![Amazon shared responsability model](https://d1.awsstatic.com/security-center/Shared_Responsibility_Model_V2.59d1eccec334b366627e9295b304202faf7b899b.jpg)
+## Security and compliance concept (AWS)
+### Where can be found AWS compliance informations:
+[AWS Compliance ressources](https://aws.amazon.com/compliance/resources/)
+[AWS Compliance program](https://aws.amazon.com/compliance/programs/)
+The compliance requierement vary between applications, it depends of the region and of components aims , the level of security depends often of the critical level/type of datas (RGPD != PCI != HIPAA...), the customer have the responsability to adapt security and compliance. 
+### How the customer can respect compliance:
+AWS provide tools to respects compliances like AES (AES-256) the strongest industry-adopted and government-approved algorithm for encrypting data, used by Amazon S3 for server-side encryptin.
+- Protecting key as rest: Best way to encrypting data is to stored the key in an HSM (Hardwars security modul) a specialised computing device that has several security controls built into it to. Amazon provide KMS (AWS Key Management Service) to manage keys using AWS system or CloudHSM to manage keys using own HSM.
+- In motion: Encrypt datas transmissions using TLS. AWS Certificate Manager and AWS Private Certificate Authority, are two services used to manage and rotate certificates accros infrastructures. AWS s2n is an open source implementation of TLS.

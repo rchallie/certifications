@@ -52,3 +52,36 @@
 	- Fiability
 - Scope of conformity: Reform used data to don't spend time / money on certifications
 - Managed services: Use it to don't have to do it
+## Fundamental cloud architecture model 
+### Explain model principles
+- Failsafe
+- Advantage of splitted component (micro-service)
+# Security and conformity
+## Define the shared responsability design (AWS)
+### Elements of the shared responsability model
+- AWS responsability:
+	- Execute ] 
+	- Manage ] => OS, virtualization layer, physical security of installations,
+	- Control  ]		 Hardware, availibility, networking etc..
+- Customer responsability :
+	- Applications
+	- Group firewall
+	- Laws relevant to applications
+	- Data security (encryption)
+	- Integration of used services.
+![Amazon shared responsability model](https://d1.awsstatic.com/security-center/Shared_Responsibility_Model_V2.59d1eccec334b366627e9295b304202faf7b899b.jpg)
+## Security and compliance concept (AWS)
+### Where can be found AWS compliance informations:
+[AWS Compliance ressources](https://aws.amazon.com/compliance/resources/)
+[AWS Compliance program](https://aws.amazon.com/compliance/programs/)
+Compliance requierement:
+	- Vary between apps
+	- Depends of components aims
+	- Depend of the critical level/type of datas (RGPD != PCI != HIPAA...
+	- Customer responsability
+### How the customer can respect compliance:
+-  AES (AES-256) data encryption
+- Protecting key as rest: Using HSM, AWS CloudHSM, AWS KSM to store encryption key
+- In motion: Use TSL. AWS Certificate Manager and AWS Private Certificate Authority manage and rotate certificates.
+- AWS s2n : implementation of TLS.
+
