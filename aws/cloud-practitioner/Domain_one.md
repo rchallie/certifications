@@ -59,3 +59,38 @@ The compliance requierement vary between applications, it depends of the region 
 AWS provide tools to respects compliances like AES (AES-256) the strongest industry-adopted and government-approved algorithm for encrypting data, used by Amazon S3 for server-side encryptin.
 - Protecting key as rest: Best way to encrypting data is to stored the key in an HSM (Hardwars security modul) a specialised computing device that has several security controls built into it to. Amazon provide KMS (AWS Key Management Service) to manage keys using AWS system or CloudHSM to manage keys using own HSM.
 - In motion: Encrypt datas transmissions using TLS. AWS Certificate Manager and AWS Private Certificate Authority, are two services used to manage and rotate certificates accros infrastructures. AWS s2n is an open source implementation of TLS.
+### Who active encryption on a service (AWS)
+AWS generate a key for each services. It's possible to manage keys, create client keys shareable, and use mains keys with AWS KMS. KMS API is usable on the command line interface AWS KMS or with the SDK AWS kit for the programmation.
+1. It possible to KMS to encrypt and decrypt datas
+2. AWS services have the possibility to encrypt data, in this case, datas are encrypted with key protected by KMS.
+3. Use the SDK AWS Encryption kit integrate in AWS KMS to encrypt applications operated in AWS or not.
+AWS KMS is integrated to most other AWS services, just tick a box. Some service allow to choose between to let it manage the keys or by yourself (using CMK _client main keys_).
+### Some services aid to do audits and reporting
+#### Logs for audits and supervision
+AWS provide logs for audit and supervision [Exemple logs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html#cloudtrail-log-file-examples-ec2).
+- Amazon CloudWatch: Is a "metrics repository". An AWS service places metric in this repository and allow to get stats from this metrics. It provide to use custom metrics. The stats can be used to create graphics on CloudWatch console. It's possible to generate alarms and do actions based on conditions (ex: stop, star or kill Amazon EC2 instance) or Amazon EC2 Auto Scaling actions and Amazon Simple Notification Service (Amazon SNS) actions.
+![Amazon CloudWatch](https://docs.aws.amazon.com/fr_fr/AmazonCloudWatch/latest/monitoring/images/CW-Overview.png)
+- AWS Config: Allow to determine, control and evaluate AWS ressources configurations. It supervise and save permanently AWS ressources configurations and automate the evaluation of registered configurations compared to desired configurations. 
+- IAM stategy: standard security advice of granting least privilege, or granting only the permissions required to perform a task. Aim is to start with a minimum set of permissions and grant additional permissions as necessary.
+## Access management fonctionnality (AWS):
+### Management of users and roles:
+#### Access key and identity strategy:
+Best way to be secure access is to rotate password, access key. AWS able to to update the credentials on each instance when rorate AWS credentials.
+#### Multi-factor auth (MFA):
+For increased security, configure multi-factor authentication (MFA) to protect AWS ressources. Enable MFA for IAM users or the AWS account root user. Each identity has its own MFA configuration.
+- Virtual MFA devices: A software app that runs on a phone or other device and emulates a physical device.
+- U2F security key: A device to plug into a USB port. Instead of manually entering a code, sign in by entering cedentials and then tapping the device.
+- Hardware MFA device: that generates a six-digit nueric code based upon a time-synchronized one-time password algorithm. The user must type a valid code from the device on a second webpage during sign-in.
+- Sms text message-based MFA: When the user signs in, AWS sends a six-digit numeric code by SMS text message to the user's mobile device. (Depreciated) 
+###  AWS Identity and Access Management (IAM):
+Allow to securly control accesses and AWS ressources.
+#### Groups / Users: 
+- Groups: is a collection of IAM users. Allow to specify permissions for multiple users. A user group can contain many users, and a user can belong to multiple user group. User groups can't be nested; they can contain only users, not other user groups. There is not default user group that automatically includes all users in the AWS account, but allowed to create one by assign each new user to it. The number and size of IAM resources in an AWS account are limited. 
+![Groups exemples](https://docs.aws.amazon.com/IAM/latest/UserGuide/images/Relationship_Between_Entities_Example.diagram.png)
+- Roles: is an IAM identity that can be created in account that has specific permissions. IAM roles is similar to an IAM user excepted that instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. No long-term credentials but temporary security credentials for role session. Use roles to delegate access ot users, applications or services that don't normally have access to AWS resource on an account.[Roles usage exemples](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+- Policies, managed policy vs customer policy vs inline policies: 
+(Policy: group of permissions)
+	- Managed policy: Standalone policy that is created and administered by AWS, that mean that the policy has its own Amazon Resource Name ([ARN](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns)) that includes the policy name. AWS managed policies are designed to provide permissions for many common use cases and mae it easier to assign appropriate permissions to users, groups and roles than if to write own policies. It's not able to change permissions defined in AWS managed policies. ![AWS Managed policies exemple](https://docs.aws.amazon.com/IAM/latest/UserGuide/images/policies-aws-managed-policies.diagram.png)
+	- Customer managed policies: Create standalone policies that are administered in customer AWS account. When attach a policy to principal entity, give the entity the permissions that are defined in the policy.![AWS Customer managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/images/policies-customer-managed-policies.diagram.png)
+	- Inline policies: is a policy that's embedded in an IAM identity (user, group, role). That is, the policy is an inherit part of the identity.
+![AWS Inline policies exemple](https://docs.aws.amazon.com/IAM/latest/UserGuide/images/policies-inline-policies.diagram.png)
