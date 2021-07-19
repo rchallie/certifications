@@ -94,3 +94,72 @@ Allow to securly control accesses and AWS ressources.
 	- Customer managed policies: Create standalone policies that are administered in customer AWS account. When attach a policy to principal entity, give the entity the permissions that are defined in the policy.![AWS Customer managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/images/policies-customer-managed-policies.diagram.png)
 	- Inline policies: is a policy that's embedded in an IAM identity (user, group, role). That is, the policy is an inherit part of the identity.
 ![AWS Inline policies exemple](https://docs.aws.amazon.com/IAM/latest/UserGuide/images/policies-inline-policies.diagram.png)
+####   Tasks requiring the use of root accounts:
+[Root vs IAM](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html)
+- First (!): Create IAM user with administrator permissions to use everyday AWS tasks. 
+- Can close root accounts.
+- Restor IAM user permissions, if the only IAM administrator accidentally revokes their own permissions.
+-  Activate IAM access to the Billing and Cost Management console
+- View certain tax invoices
+- Change / cancel AWS Support plan 
+- Register as a seller
+- Configure an Amazon S3 bucket to enable MFA
+- Edit / delete an Amazon S3 bucket that includes an invalid VPC ID or VPC endpoint ID.
+- Sign up for GovCloud.
+> Think to active MFA on root account. And seal you password on a IRL bank.
+## Security services:
+### Network security services:
+#### AWS natifs services:
+- Security group: [ VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-security-groups.htmll)
+Allow/deny traffic. It acts as a virtual firewall that controls the traffic for one or more instances. When an instance is launched, associate one or more security groups with the instance. Define modifiable rules that allow traffic to or from its associated instances. New rules are automatically applied to all instances that are assiciated with the security group. Allow only traffic that is required.
+- Network ACLs: is an optional layer acts as traffic firewall that control inbound and outbount traffic for one or multiple subnets. [Difference between Security groups and Network ACLs](https://docs.aws.amazon.com/en_en/vpc/latest/userguide/VPC_Security.html#VPC_Security_Comparison)
+- AWS WAF: Is web application firewall that help to protect Web applications or API against bots and common Web breaks, SQL injection or cross-site scripts.
+#### Security products from AWS Marketplace:
+[Marketplace](https://aws.amazon.com/marketplace/solutions/security)
+A lot security solution can be provided by vendors on AWS Marketplace, to respond to specific problems. Solutions can be cours, tools or services.
+### Usefull documentation
+- [White papers](https://aws.amazon.com/whitepapers)
+- [Documentation](https://docs.aws.amazon.com/)
+- [Best practice](https://aws.amazon.com/blogs/security/getting-started-follow-security-best-practices-as-you-configure-your-aws-resources/)
+- [Knowledge center](https://aws.amazon.com/premiumsupport/knowledge-center/)
+- [Secutiry Hub](https://aws.amazon.com/security-hub/)
+- [Forum](https://forums.aws.amazon.com/forum.jspa?forumID=283)
+- [Blog](https://aws.amazon.com/blogs/security/)
+- [Partner solutions](https://aws.amazon.com/networking/partner-solutions/)
+### AWS Trusted Advisor
+AWS Trusted Advisor help to encrease security, performance and show best practices. It evalute account using verifications.
+# Technologies
+## Methods of deploying and operating 
+- Programmatic access: IAM user might needs to make API calls, use the AWS CLI, or use the Tools for Windows PowerShell. In that case, create an access key (access key ID and a secret access key) for that user.
+- API: Amazon API Gateway: allow creating, publishing, maintaining, monitorif and securing REST, HTTP, and WebSocket APIs that access AWS or other web services and data stored in the AWS Cloud.![Amazon API Gateway](https://docs.aws.amazon.com/fr_fr/apigateway/latest/developerguide/images/Product-Page-Diagram_Amazon-API-Gateway-How-Works.png)
+- SDK kits: AWS provide a lot of SDK kits to interact with AWS services (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++).
+- AWS Management Console: Graphical interface for accessing a wide range of AWS Cloud services and managing compute, storage, and other cloud resources. The console includes the Tag Editor tool. Tags stack (as well AWS CloudFormation) is used to create resource groups in AWS Resource Groups , and manage your AWS resources collectively.
+- Infrastructure as code: AWS CloudFormation: Enable to create and provision AWS Infrastructure deployments predictably and repeatedly. (Terraform is infrastructure as code.)
+### Deployment models
+- Total cloud / Cloud native :  Cloud native is a term used to describe container-based environments. Cloud-native technologies are used to develop applications built with services packaged in containers, deployed as microservices and managed on elastic infrastructure through agile DevOps processes and continuous delivery workflows.
+- Hybrid : Hybrid cloude is a solution that combines a private cloud with one or more public cloud services, with proprietary software enabling communication between each distinct service. A hybrid cloud strategy provides businesses with greater flexibility by moving workloads between cloud solutions as needs and costs fluctuate.
+- On-promise : In an on-premise environment, resources are deployed in-house and within an enterprise's IT infrastructure. An enterprise is responsible for maintaining the solution and all its related processes
+### Connection options
+- VPN:
+	- AWS Site-to-Site VPN: Use VPN between remote network and VPC.
+	- AWS Client VPN: Client based VPN to securely access AWS resources or on-premises network
+	- AWS VPN CloudHub: Multiple branch offices can create multiple AWS Site-to-Site VPN connections via a virtual private gateway to enable communication between these networks.
+	- Third party software VPN appliance: Create a VPN connection to a remote network by using an Amazon EC2 instance in a VPC that's running a third party software VPN appliance.
+- AWS Direct Connect: Connect internal network to AWS Direct Connect location over a standard Ethernet fiber-optic cable. One end of the cable is connected to a router, the other to an AWS Direct Connect router. Enable to create virtual interface to public AWS Service (like Amazon s3) or to a VPC bypassing internet service providers.
+![AWS Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/images/direct-connect-overview.png)
+- Internet public: Connect an internet gateway to a VPC, it provide a target in a VPC route tables for internet-routable traffic, and to perform network address translation (NAT) for instances that have been assigned public IPv4 addresses.
+## AWS global infrastructure
+### Relations amont Regions, Avaibility Zones and Edge Locations:
+There are more edge locations than AWS Regions. There are more Avaibility Zones than Regions. ((:> = contain) AWS Regions :> Avaibility Zones :> edge locations). It's used to split workload on different places and have failsafe model.
+### Achieve high availability through the use of multiple Availability Zones:
+Availability Zones are connected to each other with fast, private fiber-optic networking. enabling to architect applications that automatically fail-over between AZs without interruption. Use AZs provide highly available, fault tolerant, and scalable than traditional single data center infrastructures or multi-data center infrastructures. <br>
+A Load Balancer that is a single AZ Load balancer is concidered as on of the Single Points of Failure on AWS Cloud, otherwise a multi AZ Load Balancer allow to split the traffic to the other zones if one of them is down.
+### When to consider the use of multiple AWS Regions:
+- Disaster recovery/business continuity: To avoid disaster, own an infrastructure that is in different AWS Regions allow to have no downtime and move the traffic to another place during the recovery.
+- Low latency for end-users: An applications deployed in differents AWS Regions, reduce latency for end-users because it will be connected to the closest AWS Regions. 
+- Data sovereignty: AWS keeps the datas in the Regions in which they are deployed for every server, excepted a little list.
+### High level the benefits of Edge Locations: 
+It provide faster response because is present very close to the request and minimizing the access time by providing a quicker response.
+- Amazon CloudFront: Is a fast content delivery network (CDN) that provide advance security policies, HTTPS, integrated to AWS Shield, AWS Web Application Firewell and Amazon Route 53. Amazon CloudFront associated with thousands of telecom operators, connected to major networks to provide bests performances.
+![AWS CDN edges](https://d1.awsstatic.com/global-infrastructure/maps/Cloudfront-Map_5.18.2021.aa21671b133fd3abd94ff6b8150b515cfe55aaed.png)
+- AWS Global Accelerator: upgrade to 60% the network performances when Internet is crowded. It optimize the way to applications to maintain losts packet, instability and latency to the lower level possible.
